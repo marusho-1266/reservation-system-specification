@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<body>
+  <h1>予約キャンセル</h1>
+  <form id="cancelForm">
+    <div>
+      <label for="bookingId">予約ID:</label>
+      <input type="text" id="bookingId" name="bookingId">
+    </div>
+    <div>
+      <label for="email">メールアドレス:</label>
+      <input type="email" id="email" name="email">
+    </div>
+    <div>
+      <label for="reason">キャンセル理由:</label>
+      <textarea id="reason" name="reason"></textarea>
+    </div>
+    <button type="button" onclick="cancelBooking()">キャンセル</button>
+  </form>
+
+  <script>
+    function cancelBooking() {
+      var form = document.getElementById('cancelForm');
+      google.script.run.cancelBooking(form);
+      google.script.host.close();
+    }
+  </script>
+</body>
+</html>

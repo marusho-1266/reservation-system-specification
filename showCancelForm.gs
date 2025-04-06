@@ -23,12 +23,15 @@ function cancelBooking(form) {
     var bookingIdValue = row[0];
     var emailValue = row[2];
 
-    if (bookingIdValue == bookingId || emailValue == email) {
+   if (bookingIdValue == bookingId || emailValue == email) {
       // 予約データをキャンセル
       sheet.getRange(i + 1, 8).setValue('キャンセル');
 
       // キャンセル理由を記録
       sheet.getRange(i + 1, 7).setValue(reason);
+
+      // カレンダーからイベントを削除
+      deleteCalendarEvent(bookingIdValue);
 
       // キャンセル確認メールを送信
       sendCancelConfirmationEmail(emailValue, bookingIdValue, reason);

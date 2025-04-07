@@ -21,9 +21,9 @@ function cancelBooking(form) {
   for (var i = 1; i < data.length; i++) {
     var row = data[i];
     var bookingIdValue = row[0];
-    var emailValue = row[2];
+    var emailValue = row[3];
 
-   if (bookingIdValue == bookingId || emailValue == email) {
+   if (bookingIdValue == bookingId && emailValue == email) {
       // 予約データをキャンセル
       sheet.getRange(i + 1, 8).setValue('キャンセル');
 

@@ -16,5 +16,13 @@ function sendEditConfirmationEmail(emailAddress, bookingId, newDateTime, newCont
   body += '\nお問い合わせ先: example@example.com';
 
   // メールを送信
-  MailApp.sendEmail(emailAddress, subject, body);
+  try {
+    MailApp.sendEmail({
+      to: emailAddress,
+      subject: subject,
+      body: body
+    });
+  } catch (e) {
+    Logger.log('変更確認メールの送信に失敗しました。' + e);
+  }
 }
